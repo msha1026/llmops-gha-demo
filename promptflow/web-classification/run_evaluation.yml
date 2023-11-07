@@ -7,7 +7,7 @@ column_mapping:
   prediction: ${run.outputs.category}
 
 # define cloud resource
-runtime: meisharuntime
+runtime: llmopsruntime
 
 connections:
   classify_with_llm:
