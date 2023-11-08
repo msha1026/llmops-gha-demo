@@ -34,7 +34,8 @@ jobs:
       run: pip install -r promptflow/web-classification/requirements.txt
     - name: Run promptflow
       run: |
-        pfazure run create -f promptflow/web-classification/run.yml --subscription ${{env.SUBSCRIPTION}} -g ${{env.GROUP}} -w ${{env.WORKSPACE}}
+        pfazure run create -f promptflow/web-classification/run.yml --subscription ${{env.SUBSCRIPTION}} -g ${{env.GROUP}} -w ${{env.WORKSPACE}} --stream > promptflow/llmops-helper/run_info.txt
+        cat promptflow/llmops-helper/run_info.txt
     - name: Set run name
       run: |
         echo "RUN_NAME=$(python promptflow/llmops-helper/parse_run_output.py run_info.txt)" >> "$GITHUB_ENV"
